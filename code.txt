@@ -1,0 +1,547 @@
+import 'package:flutter/material.dart';
+
+
+void main() => runApp(MyApp()); final List<dynamic> cards =
+[
+{
+'tag': '13 HOURS',
+'title': 'Cirdian Rhythm',
+'description': 'This fast starts at sunsets and lasts to morning', 'backgroundColor': 0xFF90CAF9,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTPa26vRLN0oA5LbG4qPrPDp zOMXpEOG5eWUHsoiVe-AvpRRQg',
+
+},
+
+{
+'tag': '16 HOURS',
+'title': '16:8 Intermittent ',
+'description': 'A 16 hour fast with a 6 hour feeding window', 'backgroundColor': 0xFF00E676,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTPa26vRLN0oA5LbG4qPrPDp zOMXpEOG5eWUHsoiVe-AvpRRQg',
+},
+
+{
+'tag': '18 HOURS',
+'title': '18:6 Intermittent',
+'description': 'An 18 hour fast with a 6 hour feeding window', 'backgroundColor': 0xFFFF5722,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhWSSvc6oyM7tE9MlY9tp0dP Qzs502lsYG9SLhlRR_7An_NyvM',
+
+},
+
+
+
+{
+'tag': '20 HOURS',
+'title': '20:4 Intermittent',
+'description': 'A 20 hour fast with a 4 hour feeding window', 'backgroundColor': 0xFFFF4081,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxliojJm6SFv13euUAK0naUiDv u0UsQArTSWRIyUt1mjmB9o93',
+},
+{
+'tag': '36 HOURS',
+'title': '36 Hour Fast',
+'description': 'A Single 36 hour fast, otherwise known as a "Monk Fast" ', 'backgroundColor': 0xFF200087,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxliojJm6SFv13euUAK0naUiDv u0UsQArTSWRIyUt1mjmB9o93',
+},
+
+
+
+{
+'tag': '1-168 HOURS',
+
+'title': 'Custom Fast',
+'description': 'Create your own fast up to 7 days long!', 'backgroundColor': 0Xff5B4D9D,
+'image':
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxliojJm6SFv13euUAK0naUiDv u0UsQArTSWRIyUt1mjmB9o93',
+},
+
+];
+final double progressValue=3/4; final double _strokeWidth=4.0;
+
+class MyApp extends StatefulWidget {
+
+// This widget is the root of your application. @override
+_MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> { @override
+Widget build(BuildContext context) { return MaterialApp(
+title: 'Flutter Demo', theme: ThemeData(
+primarySwatch: Colors.blue,
+),
+home: MyHomePage(title: 'Flutter Demo Home Page'),
+);
+}
+}
+
+class MyHomePage extends StatefulWidget { MyHomePage({Key key, this.title}) : super(key: key);
+final String title; @override
+_MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+
+@override
+Widget build(BuildContext context) {
+// This method is rerun every time setState is called, for instance as done
+// by the _incrementCounter method above.
+//
+// The Flutter framework has been optimized to make rerunning build methods
+// fast, so that you can just rebuild anything that needs updating rather
+// than having to individually change instances of widgets. return Scaffold(
+
+appBar: AppBar( title: Text( 'HEALTH & FITNESS',
+),
+centerTitle: true,
+backgroundColor: Colors.lightBlue[400],
+),
+
+
+//title: Text(widget.title),
+
+// Here we take the value from the MyHomePage object that was created by
+// the App.build method, and use it to set our appbar title. body:Column(
+children: <Widget>[
+// Row(
+// children: <Widget>[ TextField(
+scrollPadding: EdgeInsets.only(left: 10,right: 10), textAlign: TextAlign.center,
+keyboardType: TextInputType.phone, decoration: InputDecoration(
+labelText: 'PHONE', prefixText: '+91',
+helperText: 'Please enter your phn. no. '
+),
+) ,
+TextField(
+scrollPadding: EdgeInsets.all(15.0), textAlign: TextAlign.center,
+keyboardType: TextInputType.emailAddress, decoration: InputDecoration(
+labelText: 'EMAIL',
+helperText: 'Please enter your email address',
+),
+) ,
+TextField( obscureText: true,
+
+scrollPadding: EdgeInsets.all(5.0), textAlign: TextAlign.center,
+keyboardType: TextInputType.visiblePassword, decoration: InputDecoration(
+labelText: 'PASSWORD',
+helperText: 'Please enter your password',
+),
+) ,
+
+RaisedButton(
+padding: EdgeInsets.all(5.0), color:Colors.blueAccent, child: Text('CONTINUE'), onPressed: () {
+Navigator.push (context, MaterialPageRoute(builder: (context) =>SecondRoute()));
+}
+),
+
+// ]),
+
+],
+),
+);
+}
+}
+class SecondRoute extends StatelessWidget{ Widget build(BuildContext context) { return Scaffold(
+appBar: AppBar(
+backgroundColor: Colors.orange[400], centerTitle: true,
+title: Text("PROGRESS CHECKER",
+textAlign: TextAlign.center,
+),
+),
+body: SafeArea( child: Column(
+mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+
+CircularProgressIndicator( strokeWidth: _strokeWidth, backgroundColor: Colors.orange,
+// valueColor:Colors.blueGrey, semanticsValue: "45 %", value: progressValue,
+),
+
+
+Container(
+margin: EdgeInsets.only(bottom: 50),
+padding: EdgeInsets.only(left: 5, right: 5),
+height: 100,
+width: 200,
+alignment: Alignment.center, child: Flexible(
+child: Text(
+"Based on the research of Dr.Satchin" "Panda, this fast stimulates"
+"body clock by throughly" "fasting from morning to sunset.",
+textAlign: TextAlign.center,
+),
+),
+),
+RaisedButton( onPressed: () {
+Navigator.push(
+context,MaterialPageRoute(builder: (context) => ThirdRoute()));
+},
+
+color: Colors.green,
+shape: RoundedRectangleBorder(
+borderRadius: new BorderRadius.circular(18.0),
+),
+child: Text("Start Fast", textAlign: TextAlign.center,
+),
+),
+
+
+Container(
+margin: EdgeInsets.only(bottom: 20, left: 5, right: 5), padding: EdgeInsets.only(
+bottom: 5.0, left: 15, right: 15.0, top: 15),  decoration: BoxDecoration(shape: BoxShape.rectangle,
+border: Border.all(color: Colors.blue)), child: Column(
+mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+Row(
+mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.max,
+children: [ Icon(
+Icons.kitchen, size: 24,
+color: Colors.blue,
+),
+Flexible( child: Text(
+"Prepare healthy,fresh foods"
+" for your first meal after fasting.",
+),
+)
+],
+),
+Row(
+mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.max,
+children: [ Icon(
+Icons.local_drink, size: 24,
+color: Colors.orange,
+),
+Flexible( child: Text(
+
+"Hydrate with water,before," "during and after a fast.",
+
+),
+),
+],
+),
+Row(
+mainAxisAlignment: MainAxisAlignment.center, children: [
+Icon( Icons.fastfood, size: 24,
+color: Colors.blue,
+),
+Flexible( child: Text(
+"Avoid processed and unhealthy " "food before and after fasting",
+
+
+
+
+
+
+
+
+
+
+
+));
+}}
+
+
+
+
+
+
+
+),
+
+]),
+
+),
+)
+],
+),
+
+]),
+
+class ThirdRoute extends StatelessWidget{ @override
+Widget build(BuildContext context) { return Container(
+
+child: Column(
+
+children: <Widget>[ Card(
+
+child: TextField( style: TextStyle( fontSize: 25.0,
+color: Colors.deepPurpleAccent,
+),
+scrollPadding: EdgeInsets.all(5.0), textAlign: TextAlign.center,
+
+decoration: InputDecoration(
+contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+
+border: OutlineInputBorder(
+borderRadius: BorderRadius.circular(20.0),
+),
+labelText: 'Search',
+prefixIcon: Icon(Icons.search),
+
+),
+),
+
+
+),
+
+ListView(
+children: cards.map((card) {
+
+return Card( child: Container( width:100 , height: 100,
+decoration : BoxDecoration(color: Color(card['backgroundColor'])), child: Row(
+children: <Widget>[
+Text(card['title']), Image.network(card['image']), Text(card['title']), Text(card['description']),
+
+],
+),
+),
+);
+
+}).toList(),
+),
+]
+
+),
+
+);
+
+}}
+
+class FourthRoute extends StatelessWidget{ @override
+Widget build(BuildContext ctx) { return Scaffold(
+backgroundColor: const Color(0xFFE9E9E9), bottomNavigationBar: BottomNavigationBar( items: [
+BottomNavigationBarItem( icon: Icon(Icons.timer), title: Text(
+"Timer",
+style: const TextStyle(color: Colors.black),
+),
+),
+BottomNavigationBarItem( icon: Icon(Icons.view_comfy), title: Text(
+"Fasts",
+style: const TextStyle(color: Colors.black),
+),
+),
+BottomNavigationBarItem( icon: Icon(Icons.equalizer), title: Text(
+
+"History",
+style: const TextStyle(color: Colors.black),
+),
+),
+BottomNavigationBarItem( icon: Icon(Icons.assignment), title: Text(
+"Learn",
+style: const TextStyle(color: Colors.black),
+),
+),
+
+
+],
+),
+); }
+
+
+
+
+
+}
+
+
+
+
+
+import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/gestures.dart'; import 'package:flutter/material.dart'; import 'package:flutter/widgets.dart';
+
+
+void main() => runApp;
+
+
+
+abstract class MyApp implements StatefulWidget
+{
+
+get debugOwner
+=> null;
+
+
+
+Widget build(BuildContext context) {
+var gestureRecognizer = TapGestureRecognizer; TextStyle defaultStyle = TextStyle(color:
+Colors.grey, fontSize:
+20.0);
+
+TextStyle linkStyle = TextStyle(color: Colors.blue);
+
+return RichText(
+
+text: TextSpan(style: defaultStyle, children: <TextSpan>[
+
+TextSpan(text: 'health score for the
+day:'),
+
+TextSpan( text: '70%',
+style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+..onTap = ()
+{
+
+
+
+print('70%');
+
+}),
+
+TextSpan(text: 'time worked out: '), TextSpan(
+text: '0 min’ style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+..onTap = ()
+{
+
+print('0 mins"');
+
+}),
+
+TextSpan(text: 'calories burnt:'), TextSpan(
+text: '200 kcals', style: linkStyle,
+recognizer: TapGestureRecognizer()
+
+..onTap = ()
+{
+
+print('20’kcals'); TextSpan(text:'worlouttitles:');
+
+TextSpan(
+
+
+text: 'daily plan',
+
+
+style: linkStyle,
+
+
+recognizer: TapGestureRecognizer()
+
+
+
+..onTap = ()
+{
+
+
+
+print('daily plan');
+
+
+TextSpan(text: 'personalised
+plan');
+
+
+TextSpan(
+
+
+text: 'personalised plan',
+
+
+style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+
+..onTap = () {
+
+
+print('personalisedplan');
+
+•TextSpan(text:
+'calories burnt:');
+
+
+
+TextSpan(text: '1800kcal', style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+
+
+..onTap = ()
+{
+
+
+
+
+
+print('1800 kcals');
+
+
+TextSpan(text: 'Foods consumed:');
+
+
+TextSpan(
+
+text: '70%', style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+..onTap = ()
+{
+print( 'palak paneer, cheese vada, paneer butter masala'); TextSpan( text: 'steps walked:');
+TextSpan(text: '8766', style: linkStyle, recognizer:
+TapGestureRecognizer()
+
+..onTap = () {
+
+print('8766');
+
+TextSpan(text:’'water consumed:');
+TextSpan(
+
+text: '4 litres', style: linkStyle,
+recognizer:
+
+
+
+
+
+
+
+
+
+
+•TapGestureRecognizer()
+
+..onTap = () { print(‘'3/5adhered');
+TextSpan( text:'weight:');
+
+TextSpan(
+
+text: '50 kgs',
+
+style: linkStyle,
+
+recognizer: TapGestureRecognizer()
+
+..onTap = ()
+print( '50 kgs');
+
+});
+
+});
+
+});
+
+},
+
+);
+});
+});
+
+});
+
+
+});
+
+});
+})
+
+]));
+
+}
